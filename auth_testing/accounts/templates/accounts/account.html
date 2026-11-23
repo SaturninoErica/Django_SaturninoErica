@@ -1,0 +1,16 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<h1>Личный кабинет</h1>
+<p>Имя пользователя: {{ request.user.username }}</p>
+<p>Электронная почта: {{ request.user.email }}</p>
+{% if request.user.is_staff %}
+    <p><a href="{% url 'test-report' %}">Скачать отчет тестирования Word</a></p>
+{% endif %}
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
+{% endblock %}

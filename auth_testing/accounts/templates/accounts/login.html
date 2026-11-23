@@ -1,0 +1,14 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<h1>Вход</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>Решите пример: <strong>{{ captcha_question }}</strong></p>
+    <button type="submit">Войти</button>
+</form>
+<p><a href="{% url 'register' %}">Создать аккаунт</a></p>
+{% endblock %}
